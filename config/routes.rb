@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "sessions#new"
   resources :users, except: :index
   resources :videos
   resources :descriptions, except: :index
