@@ -6,9 +6,13 @@ class VideosController < ApplicationController
 
   def new
     @video = Video.new
+    if session[:user_id] == nil
+      redirect_to login_path
+    end
   end
 
   def create
+    current_user = User.find(session[:user_id])
     @video = Video.new(video_params)
     if @video.save
       current_user.uploads << @video
