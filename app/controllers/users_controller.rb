@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
+    @videos = nil
+    if @user.uploads.any?
+      @videos = @user.uploads
+    end
   end
 
   def new
