@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   def index
-    @videos = Video.all
+    @videos = Video.includes(:description).where(descrption = nil)
   end
 
   def new
