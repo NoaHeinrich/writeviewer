@@ -1,1 +1,4 @@
-<%=raw YouTubeAddy.youtube_embed_url(@video.url,560,345)%>
+<strong><%= @video_info.title %></strong>
+<p>Uploaded by <%=@video.uploader.username%>, <%=@video.created_at.strftime("%F")%></p>
+<p><%=raw @video_info.embed_code(iframe_attributes: { width: 540, height: 360 }) %></p>
+<p><%= @video.comment %></p>

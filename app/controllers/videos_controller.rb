@@ -44,6 +44,7 @@ class VideosController < ApplicationController
 
   def set_video
     @video = Video.find(params[:id])
+    @video_info = VideoInfo.new(@video.url)
   end
 
   def video_params
