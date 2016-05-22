@@ -2,3 +2,17 @@
 <p>Uploaded by <%=@video.uploader.username%>, <%=@video.created_at.strftime("%F")%></p>
 <p><%=raw @video_info.embed_code(iframe_attributes: { width: 540, height: 360 }) %></p>
 <p><%= @video.comment %></p>
+<% unless @video.description || !logged_in? %>
+  <div>
+    <strong>Write a Description: </strong>
+    <%= form_for(:description) do |f| %>
+      <div class="field">
+        <%= f.label :content %><br>
+        <%= f.text_area :content, size: "85x20" %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
