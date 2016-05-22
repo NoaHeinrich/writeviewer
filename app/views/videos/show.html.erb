@@ -4,15 +4,6 @@
 <p><%= @video.comment %></p>
 <% unless @video.description || !logged_in? %>
   <div>
-    <strong>Write a Description: </strong>
-    <%= form_for(:description) do |f| %>
-      <div class="field">
-        <%= f.label :content %><br>
-        <%= f.text_area :content, size: "85x20" %>
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    <% end %>
+    <%= link_to "Write a description", new_video_description_path(@video) %>
   </div>
 <% end %>
