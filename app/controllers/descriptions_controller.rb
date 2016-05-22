@@ -7,12 +7,12 @@ class DescriptionsController < ApplicationController
 
   def create
     current_user = User.find(session[:user_id])
-    video = Video.find(params[:video_id])
+    @video = Video.find(params[:video_id])
     @description = Description.new(description_params)
     if @description.save
       current_user.descriptions << @description
-      video.description = @description
-      redirect_to video
+      @video.description = @description
+      redirect_to @video
     else
       render video
     end
