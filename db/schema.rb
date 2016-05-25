@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(version: 20160517215615) do
 
   create_table "videos", force: :cascade do |t|
     t.string   "url"
+    t.string   "embed_code"
+    t.string   "title"
+    t.string   "thumbnail"
     t.integer  "uploader_id"
     t.text     "comment"
     t.datetime "created_at",  null: false
