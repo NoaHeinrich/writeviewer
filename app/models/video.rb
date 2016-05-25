@@ -3,4 +3,7 @@ class Video < ActiveRecord::Base
   has_one :description
 
   validates :url, presence: true
+  validates :embed_code, presence: true
+  validates :title, presence: true
+  validates :thumbnail, presence: true
 end

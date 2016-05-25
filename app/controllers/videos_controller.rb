@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   def index
-    @videos = Video.includes(:description).where(descrption = nil)
+    @videos = Video.includes(:description).where(description = nil)
   end
 
   def new
@@ -14,7 +14,11 @@ class VideosController < ApplicationController
   def create
     current_user = User.find(session[:user_id])
     @video = Video.new(video_params)
-    if @video.save
+    video_info = VideoInfo.new(@video.url)
+    @video.embed_code = video_info.embed_code
+    @video.title = video_info.title
+    @video.thumbnail = video_info.thumbnail_medium
+    if @video.save && video_info.available?
       current_user.uploads << @video
       redirect_to current_user
     else
@@ -44,10 +48,9 @@ class VideosController < ApplicationController
 
   def set_video
     @video = Video.find(params[:id])
-    @video_info = VideoInfo.new(@video.url)
   end
 
   def video_params
-    params.require(:video).permit(:url, :description)
+    params.require(:video).permit(:url, :description, :title, :embed_code, :thumbnail)
   end
 end

@@ -3,7 +3,10 @@
 <div>
   <% if @videos %>
     <% @videos.each do |video| %>
-    <p><%= video.url %></p>
+      <p><%=link_to video.title, video_path %></p>
+      <% if video.description %>
+        <p>This video has been described</p>
+      <% end %>
     <% end %>
   <% else %>
     <strong>You haven't uploaded any videos!</strong>
