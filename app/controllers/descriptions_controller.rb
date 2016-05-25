@@ -3,6 +3,7 @@ class DescriptionsController < ApplicationController
 
   def new
     @description = Description.new
+    @video = Video.find(params[:video_id])
   end
 
   def create
