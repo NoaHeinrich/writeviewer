@@ -23,6 +23,12 @@ class DescriptionsController < ApplicationController
   end
 
   def update
+    @video = Video.find(params[:video_id])
+    if @description.update(description_params)
+      redirect_to @video
+    else
+      render @video
+    end
   end
 
   def destroy
