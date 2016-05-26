@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   def index
-    @videos = Video.includes(:description).where(description = nil)
+    @videos = Video.includes(:description).where(description = nil).paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
@@ -9,6 +9,12 @@ class VideosController < ApplicationController
     if session[:user_id] == nil
       redirect_to login_path
     end
+  end
+
+  def search
+    search = params[:search]
+    @videos = Video.search_by_title(search).paginate(:page => params[:page], :per_page => 10)
+    render :index
   end
 
   def create
