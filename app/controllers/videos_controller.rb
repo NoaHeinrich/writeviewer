@@ -11,6 +11,12 @@ class VideosController < ApplicationController
     end
   end
 
+  def search
+    search = params[:search]
+    @videos = Video.search_by_title(search)
+    render :index
+  end
+
   def create
     current_user = User.find(session[:user_id])
     @video = Video.new(video_params)
