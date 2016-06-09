@@ -32,6 +32,9 @@ class DescriptionsController < ApplicationController
   end
 
   def destroy
+    @video = Video.find(params[:video_id])
+    @description.destroy
+    redirect_to @video
   end
 
   private

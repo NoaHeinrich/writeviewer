@@ -2,5 +2,12 @@
 
   <p><%= link_to video.title, video %></p>
   <img src=<%= video.thumbnail %>>
+  <p>Described:
+    <% if video.description %>
+      <strong>Yes</strong>
+    <% else %>
+      <strong>No</strong>
+    <% end %>
+  </p>
 <% end %>
 <p><%= will_paginate @videos %></p>
