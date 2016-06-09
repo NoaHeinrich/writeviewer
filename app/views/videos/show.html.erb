@@ -4,7 +4,11 @@
 <p><%= @video.comment %></p>
 <% unless @video.description %>
   <div>
-    <%= link_to "Write a description", new_video_description_path(@video) %>
+    <% if logged_in? %>
+      <%= link_to "Write a description", new_video_description_path(@video) %>
+    <% else %>
+      <%= link_to "Want to describe it? Log In here.", login_path %>
+    <% end %>
   </div>
 <% else %>
   <div>
