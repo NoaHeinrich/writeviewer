@@ -3,6 +3,7 @@ body {
   color: white;
   font-family: Arial;
   font-weight: bold;
+  font-size: 18px;
 }
 
 #title {
@@ -11,8 +12,14 @@ body {
 
 a:link{
   color: white;
+  padding-left: 10px;
+  padding-right: 5px;
 }
 
 a:visited {
   color: white;
+}
+
+nav {
+  text-align: justify;
 }

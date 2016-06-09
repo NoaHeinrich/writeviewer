@@ -3,7 +3,7 @@
 <div>
   <% if @videos %>
     <% @videos.each do |video| %>
-      <p><%=link_to video.title, video_path %></p>
+      <p><%=link_to video.title, video %></p>
       <% if video.description %>
         <p>This video has been described</p>
       <% end %>
