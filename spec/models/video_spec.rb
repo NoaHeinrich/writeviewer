@@ -32,4 +32,13 @@ describe Video do
       expect(bad_video.valid?).to be false
     end
   end
+
+  describe "#search_by_title" do
+    it "returns a list of videos containing the query string" do
+      @video.get_video_info
+      @video.save
+      videos = Video.search_by_title("testing")
+      expect(videos.length).to eq 1
+    end
+  end
 end
