@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'database_cleaner'
 
 describe Video do
   before(:each) do
@@ -35,10 +36,13 @@ describe Video do
 
   describe "#search_by_title" do
     it "returns a list of videos containing the query string" do
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.start
       @video.get_video_info
       @video.save
       videos = Video.search_by_title("testing")
       expect(videos.length).to eq 1
+      DatabaseCleaner.clean
     end
   end
 end
