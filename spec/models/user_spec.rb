@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe User do
   before(:each) do
-    @user = User.new(username: "test", email: "test@test.com", password: "password")
+    @user = User.new(username: "tester", email: "test@test.com", password: "password")
   end
 
   let(:user) { User.new }
